@@ -1,13 +1,10 @@
 import Image from "next/image";
 
-import Navbar from "@/layouts/navbar";
-
-import notebookIllustration from "../assets/illustrations/notebook.svg";
+import notebookIllustration from "../../assets/illustrations/notebook.svg";
 
 const page = () => {
 	return (
-		<main>
-			<Navbar />
+		<>
 			<section className="h-vh flex items-center justify-center">
 				<div className="grid md:grid-cols-2 items-center py-32  container w-full">
 					<section>
@@ -24,7 +21,7 @@ const page = () => {
 					/>
 				</div>
 			</section>
-		</main>
+		</>
 	);
 };
 
