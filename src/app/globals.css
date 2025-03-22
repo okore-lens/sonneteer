@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+	--foreground: #ffffff;
+	--background: #171717;
+}
+
+@theme inline {
+	--color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--font-crimson: var(--font-crimson-text);
+	--font-rubik: var(--font-rubik);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground: #0a0a0a;
+		--background: #ededed;
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-rubik), sans-serif;
+}
+
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-crimson-text), sans-serif;
+		font-weight: 600;
+	}
+}
+
+@layer utilities {
+	.h-vh {
+		height: 100dvh;
+	}
+}
+
+h1 {
+	@apply font-bold text-5xl lg:text-7xl;
+}
+
+h6 {
+	@apply text-lg lg:text-xl;
+}
+
+.container {
+	width: 90%;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
