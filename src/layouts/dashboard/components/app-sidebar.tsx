@@ -3,9 +3,6 @@
 import * as React from "react";
 import { Command, LayoutDashboard, NotebookPen } from "lucide-react";
 
-import { NavMain } from "./nav-main";
-
-import { NavUser } from "./nav-user";
 import {
 	Sidebar,
 	SidebarContent,
@@ -16,6 +13,9 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { PATHS } from "@/libs/paths";
+
+import { NavUser } from "./nav-user";
+import { NavMain } from "./nav-main";
 
 const data = {
 	user: {
@@ -43,9 +43,9 @@ const data = {
 	],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
 	return (
-		<Sidebar variant="inset" {...props}>
+		<Sidebar {...props}>
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>
@@ -75,4 +75,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			</SidebarFooter>
 		</Sidebar>
 	);
-}
+};
+
+export default AppSidebar;

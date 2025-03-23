@@ -19,6 +19,8 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import { usePathname } from "next/navigation";
+import { cn } from "@/libs/utils";
 
 export function NavMain({
 	items,
@@ -34,6 +36,8 @@ export function NavMain({
 		}[];
 	}[];
 }) {
+	const pathname = usePathname();
+
 	return (
 		<SidebarGroup>
 			<SidebarGroupLabel>Creative</SidebarGroupLabel>
@@ -45,7 +49,13 @@ export function NavMain({
 						defaultOpen={item.isActive}
 					>
 						<SidebarMenuItem>
-							<SidebarMenuButton asChild tooltip={item.title}>
+							<SidebarMenuButton
+								className={cn(
+									pathname == item.url && "bg-gray-300"
+								)}
+								asChild
+								tooltip={item.title}
+							>
 								<Link href={item.url}>
 									<item.icon />
 									<span>{item.title}</span>
@@ -69,6 +79,11 @@ export function NavMain({
 												>
 													<SidebarMenuSubButton
 														asChild
+														className={cn(
+															pathname ===
+																subItem.url &&
+																"bg-gray-300"
+														)}
 													>
 														<Link
 															href={subItem.url}

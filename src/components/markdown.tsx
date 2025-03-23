@@ -1,18 +1,15 @@
 interface MarkdownProps {
-	title: string;
 	content: string;
 }
 
-const Markdown = ({ title, content = "" }: MarkdownProps) => {
+const Markdown = ({ content = "" }: MarkdownProps) => {
 	return (
-		<section className="prose prose-lg dark:prose-invert mx-auto font-serif">
-			<h2 className="text-center">{title}</h2>
-			<div
-				dangerouslySetInnerHTML={{
-					__html: content,
-				}}
-			/>
-		</section>
+		<div
+			dangerouslySetInnerHTML={{
+				__html: content,
+			}}
+			className="prose prose-lg dark:prose-invert p-4 max-w-3xl rounded bg-article-bg article-content"
+		/>
 	);
 };
 

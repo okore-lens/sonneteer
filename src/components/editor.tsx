@@ -9,33 +9,27 @@ import {
 	AlignLeft,
 	AlignRight,
 	Save,
-	Share2,
-	Type,
-	Indent,
+	Megaphone,
 	Quote,
-	Palette,
-	Download,
 	List,
 	Heading as HeadingIcon,
 	Undo2,
 	Redo2,
+	SeparatorHorizontal,
+	ImageIcon,
+	ImagePlus,
+	ListOrdered,
 } from "lucide-react";
 import { useState } from "react";
+import Image from "@tiptap/extension-image";
 import Color from "@tiptap/extension-color";
 import StarterKit from "@tiptap/starter-kit";
-import ListItem from "@tiptap/extension-list-item";
-import Document from "@tiptap/extension-document";
-import Highlight from "@tiptap/extension-highlight";
+import { Level } from "@tiptap/extension-heading";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
-import Blockquote from "@tiptap/extension-blockquote";
-import Dropcursor from "@tiptap/extension-dropcursor";
-import BulletList from "@tiptap/extension-bullet-list";
 import Placeholder from "@tiptap/extension-placeholder";
-import OrderedList from "@tiptap/extension-ordered-list";
 import { EditorContent, useEditor } from "@tiptap/react";
-import Heading, { Level } from "@tiptap/extension-heading";
 
 import {
 	Select,
@@ -50,25 +44,41 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
+
+import ArticlePreview from "./article-preview";
+import { optimizeImage } from "@/libs/utils";
 
 const Editor = () => {
 	const [title, setTitle] = useState("");
 
 	const editor = useEditor({
 		extensions: [
-			StarterKit,
-			ListItem,
-			OrderedList,
-			BulletList,
+			StarterKit.configure({
+				heading: {
+					levels: [1, 2, 3, 4, 5, 6],
+				},
+				blockquote: {
+					HTMLAttributes: {
+						class: "!border-l-4 pl-4 text-gray-600 border-gray-500",
+					},
+				},
+				bulletList: {
+					keepMarks: true,
+					HTMLAttributes: {
+						class: "!list-disc !list-outside  !pl-4 ",
+					},
+				},
+				orderedList: {
+					keepMarks: true,
+					HTMLAttributes: {
+						class: "!list-decimal !list-outside  !pl-4 ",
+					},
+				},
+			}),
+
 			Placeholder.configure({
 				placeholder: "Begin your poem here...",
 			}),
@@ -78,18 +88,17 @@ const Editor = () => {
 			}),
 			TextStyle,
 			Color,
-			Highlight,
-			Dropcursor,
-			Document,
-			Heading.configure({
-				levels: [1, 2, 3, 4, 5, 6],
+			Image.configure({
+				allowBase64: true,
+				HTMLAttributes: {
+					class: "w-auto",
+				},
 			}),
-			Blockquote,
 		],
 		content: "",
 		editorProps: {
 			attributes: {
-				class: "prose prose-lg dark:prose-invert focus:outline-none min-h-[300px] leading-relaxed",
+				class: "prose prose-lg dark:prose-invert focus:outline-none bg-article-bg p-4 rounded min-h-[300px] leading-relaxed",
 			},
 		},
 	});
@@ -118,11 +127,15 @@ const Editor = () => {
 		editor?.chain().focus().toggleStrike().run();
 	};
 
+	const setHorizontalLine = () => {
+		editor?.chain().focus().setHorizontalRule().run();
+	};
+
 	const toggleHeading = (level: string = "Paragraph") => {
 		if (!editor) return;
 
 		if (!level || level === "Paragraph") {
-			editor?.chain().focus().setParagraph();
+			editor?.chain().focus().setParagraph().run();
 		} else {
 			editor
 				?.chain()
@@ -140,6 +153,10 @@ const Editor = () => {
 		editor?.chain().focus().toggleBulletList().run();
 	};
 
+	const toggleOrderedList = () => {
+		editor?.chain().focus().toggleOrderedList().run();
+	};
+
 	const handleUndo = () => {
 		editor?.chain().focus().undo().run();
 	};
@@ -148,33 +165,62 @@ const Editor = () => {
 		editor?.chain().focus().redo().run();
 	};
 
-	const indent = () => {
-		// In a real implementation, this would handle indentation
-		// For now, we'll add a non-breaking space as a simple indent
-		editor?.chain().focus().insertContent("&nbsp;&nbsp;&nbsp;&nbsp;").run();
-	};
+	const addImage = () => {
+		const url = window.prompt("Enter the URL of the image:");
 
-	const setTextColor = (color: string) => {
-		editor?.chain().focus().setColor(color).run();
-	};
-
-	const setHighlight = (color: string) => {
-		editor?.chain().focus().toggleHighlight({ color }).run();
-	};
-
-	const exportAsText = () => {
-		if (editor) {
-			const text = editor.getText();
-			const blob = new Blob([text], { type: "text/plain" });
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement("a");
-			a.href = url;
-			a.download = `${title}.txt`;
-			a.click();
+		if (url) {
+			editor?.chain().focus().setImage({ src: url }).run();
 		}
 	};
 
-	const savePoem = () => {
+	const handleImageUpload = async (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		if (!event.target.files?.length || !editor) return;
+
+		const file = event.target.files[0];
+		const optimizedBase64 = await optimizeImage(file);
+
+		editor.chain().focus().setImage({ src: optimizedBase64 }).run();
+		event.target.value = "";
+	};
+
+	const handleDrop = async (event: React.DragEvent<HTMLDivElement>) => {
+		event.preventDefault();
+		if (!editor || !event.dataTransfer.files.length) return;
+
+		const file = event.dataTransfer.files[0];
+		if (!file.type.startsWith("image/")) return;
+
+		const optimizedBase64 = await optimizeImage(file);
+		editor.chain().focus().setImage({ src: optimizedBase64 }).run();
+	};
+
+	const getCurrentNodeType = () => {
+		if (!editor) return "Paragraph";
+
+		if (editor.isActive("heading", { level: 4 })) return "4";
+		if (editor.isActive("heading", { level: 6 })) return "6";
+
+		return "Paragraph";
+	};
+
+	const triggerImageInput = () =>
+		document.getElementById("image-upload")?.click();
+
+	// const exportAsText = () => {
+	// 	if (editor) {
+	// 		const text = editor.getText();
+	// 		const blob = new Blob([text], { type: "text/plain" });
+	// 		const url = URL.createObjectURL(blob);
+	// 		const a = document.createElement("a");
+	// 		a.href = url;
+	// 		a.download = `${title}.txt`;
+	// 		a.click();
+	// 	}
+	// };
+
+	const publishArticle = () => {
 		// In a real app, this would save to a database
 		console.log({
 			title,
@@ -194,14 +240,15 @@ const Editor = () => {
 
 	if (!editor) return null;
 
+	const getEditorHTML = (): string => editor?.getHTML() || "";
+
 	return (
 		<section className="max-w-3xl">
-			<Input
-				type="text"
+			<Textarea
 				value={title}
 				onChange={(e) => setTitle(e.target.value)}
 				placeholder="Give it a title..."
-				className="!text-6xl border-none focus-visible:ring-0 px-0 mb-10 h-[60px] leading-none flex items-center justify-center"
+				className="!text-2xl xl:!text-4xl !resize-none border-none focus-visible:ring-0 px-0 mb-10 leading-none flex items-center justify-center"
 			/>
 
 			<div className="flex flex-wrap shadow-sm mb-6 items-center gap-1 p-4 rounded-xl">
@@ -209,7 +256,10 @@ const Editor = () => {
 					<Tooltip>
 						<TooltipContent>Headings</TooltipContent>
 						<TooltipTrigger asChild>
-							<Select onValueChange={toggleHeading}>
+							<Select
+								value={getCurrentNodeType()}
+								onValueChange={toggleHeading}
+							>
 								<SelectTrigger>
 									<HeadingIcon className="size-4" />
 									<SelectValue placeholder="Select a typography" />
@@ -302,7 +352,7 @@ const Editor = () => {
 					</Tooltip>
 				</TooltipProvider>
 
-				<Separator orientation="vertical" className="mx-1 h-6" />
+				<Separator orientation="vertical" className="!h-6 mx-1" />
 
 				<TooltipProvider>
 					<Tooltip>
@@ -373,7 +423,7 @@ const Editor = () => {
 					</Tooltip>
 				</TooltipProvider>
 
-				<Separator orientation="vertical" className="mx-1 h-6" />
+				<Separator orientation="vertical" className="!h-6 mx-1" />
 
 				<TooltipProvider>
 					<Tooltip>
@@ -414,110 +464,73 @@ const Editor = () => {
 						<TooltipContent>Bullet List</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
-
-				<Separator orientation="vertical" className="mx-1 h-6" />
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={toggleOrderedList}
+								className={
+									editor?.isActive("orderedList")
+										? "bg-muted"
+										: ""
+								}
+							>
+								<ListOrdered className="size-4" />
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>Ordered List</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
 
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger asChild>
-							<Button variant="ghost" size="sm" onClick={indent}>
-								<Indent className="size-4" />
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={setHorizontalLine}
+							>
+								<SeparatorHorizontal className="size-4" />
 							</Button>
 						</TooltipTrigger>
-						<TooltipContent>Indent</TooltipContent>
+						<TooltipContent>Line Separator</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
+				<Separator orientation="vertical" className="!h-6 mx-1" />
+
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={addImage}
+							>
+								<ImageIcon className="h-4 w-4" />
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>Insert Image URL</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
 
-				<Separator orientation="vertical" className="mx-1 h-6" />
-
-				<DropdownMenu>
-					<TooltipProvider>
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<DropdownMenuTrigger asChild>
-									<Button variant="ghost" size="sm">
-										<Palette className="size-4" />
-									</Button>
-								</DropdownMenuTrigger>
-							</TooltipTrigger>
-							<TooltipContent>Text Color</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-					<DropdownMenuContent>
-						<DropdownMenuItem
-							onClick={() => setTextColor("#000000")}
-						>
-							<div className="w-4 h-4 rounded-full bg-black mr-2" />
-							&nbsp; Black
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setTextColor("#3b82f6")}
-						>
-							<div className="w-4 h-4 rounded-full bg-blue-500 mr-2" />
-							&nbsp; Blue
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setTextColor("#ef4444")}
-						>
-							<div className="w-4 h-4 rounded-full bg-red-500 mr-2" />
-							&nbsp; Red
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setTextColor("#10b981")}
-						>
-							<div className="w-4 h-4 rounded-full bg-emerald-500 mr-2" />
-							&nbsp; Green
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setTextColor("#8b5cf6")}
-						>
-							<div className="w-4 h-4 rounded-full bg-violet-500 mr-2" />
-							&nbsp; Purple
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
-
-				<DropdownMenu>
-					<TooltipProvider>
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<DropdownMenuTrigger asChild>
-									<Button variant="ghost" size="sm">
-										<Type className="size-4" />
-									</Button>
-								</DropdownMenuTrigger>
-							</TooltipTrigger>
-							<TooltipContent>Highlight</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-					<DropdownMenuContent>
-						<DropdownMenuItem
-							onClick={() => setHighlight("#fef3c7")}
-						>
-							<div className="w-4 h-4 rounded-full bg-amber-100 mr-2" />
-							&nbsp; Yellow
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setHighlight("#dcfce7")}
-						>
-							<div className="w-4 h-4 rounded-full bg-green-100 mr-2" />
-							&nbsp; Green
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setHighlight("#dbeafe")}
-						>
-							<div className="w-4 h-4 rounded-full bg-blue-100 mr-2" />
-							&nbsp; Blue
-						</DropdownMenuItem>
-						<DropdownMenuItem
-							onClick={() => setHighlight("#f3e8ff")}
-						>
-							<div className="w-4 h-4 rounded-full bg-purple-100 mr-2" />
-							&nbsp; Purple
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
-
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								variant="ghost"
+								size="sm"
+								onClick={triggerImageInput}
+								type="button"
+							>
+								<ImagePlus className="size-4" />
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>Upload Image</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
+				<Separator orientation="vertical" className="!h-6 mx-1" />
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger asChild>
@@ -548,17 +561,33 @@ const Editor = () => {
 				</TooltipProvider>
 			</div>
 
-			<EditorContent editor={editor} className="min-h-[300px]" />
+			<EditorContent
+				editor={editor}
+				className="min-h-[300px]"
+				onDrop={handleDrop}
+			/>
 
-			{/* <Markdown title={title} content={editor?.getHTML() || ""} /> */}
+			<input
+				id="image-upload"
+				type="file"
+				accept="image/*"
+				onChange={handleImageUpload}
+				className="sr-only"
+			/>
 
-			<div className="flex justify-between mt-6  p-2">
-				<div className="flex gap-2">
-					<Button variant="outline" onClick={savePoem}>
-						<Save className="size-4 mr-2" />
-						Save
-					</Button>
-					<DropdownMenu>
+			{getEditorHTML() && isMeaningfulContent(getEditorHTML()) && (
+				<div className="flex justify-between mt-6  p-2">
+					<div className="flex gap-2">
+						<Button variant="outline">
+							<Save className="size-4 mr-2" />
+							Save
+						</Button>
+						<ArticlePreview
+							content={getEditorHTML()}
+							title={title}
+							publishArticle={publishArticle}
+						/>
+						{/* <DropdownMenu>
 						<DropdownMenuTrigger asChild>
 							<Button variant="outline">
 								<Download className="size-4 mr-2" />
@@ -570,15 +599,21 @@ const Editor = () => {
 								Plain Text (.txt)
 							</DropdownMenuItem>
 						</DropdownMenuContent>
-					</DropdownMenu>
+					</DropdownMenu> */}
+					</div>
+					<Button onClick={publishArticle}>
+						<Megaphone className="size-4 mr-2" />
+						Publish
+					</Button>
 				</div>
-				<Button>
-					<Share2 className="size-4 mr-2" />
-					Publish
-				</Button>
-			</div>
+			)}
 		</section>
 	);
 };
 
 export default Editor;
+
+const isMeaningfulContent = (html: string) => {
+	const cleaned = html.replace(/<p>\s*<\/p>/g, "").trim();
+	return cleaned.length > 0;
+};
