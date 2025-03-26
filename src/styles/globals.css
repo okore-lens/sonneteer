@@ -73,6 +73,10 @@ h6 {
 	@apply text-lg lg:text-xl;
 }
 
+small {
+	@apply text-balance  text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary;
+}
+
 .container {
 	width: 90%;
 	max-width: 1000px;
