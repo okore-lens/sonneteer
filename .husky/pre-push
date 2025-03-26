@@ -1,8 +1,10 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 echo "Running Jest tests before pushing..."
 pnpm test
 
-echo "Checking eslint issues..."
+if [ $? -ne 0 ]; then
+  echo "❌ Tests failed! Push aborted."
+  exit 1
+fi
+
+echo "Checking eslint & build issues..."
 pnpm build
