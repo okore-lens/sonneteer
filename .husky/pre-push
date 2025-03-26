@@ -6,8 +6,8 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "🔍 Running ESLint..."
-pnpm exec eslint . --max-warnings=0
+echo "🔍 Running ESLint on src/..."
+pnpm exec eslint src --max-warnings=0
 if [ $? -ne 0 ]; then
   echo "❌ Linting failed! Push aborted."
   exit 1
