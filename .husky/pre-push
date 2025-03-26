@@ -1,4 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "Running Jest tests before pushing..."
+pnpm test
+
+echo "Checking eslint issues..."
 pnpm build

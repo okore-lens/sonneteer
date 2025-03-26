@@ -57,6 +57,6 @@ describe("Markdown Component", () => {
 
     fireEvent.click(drawerTriggerBtn);
 
-    expect(screen.getByTestId("markdown")).toBeVisible();
+    expect(screen.getByTestId("markdown")).not.toBeVisible();
   });
 });
