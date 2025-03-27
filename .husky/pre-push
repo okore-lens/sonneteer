@@ -6,18 +6,13 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "🔍 Running ESLint on src/..."
-pnpm exec eslint src --max-warnings=0
+echo "🔍 Building the project"
+pnpm build
 if [ $? -ne 0 ]; then
-  echo "❌ Linting failed! Push aborted."
+  echo "❌ Build failed! Push aborted."
   exit 1
 fi
 
-echo "🔍 Checking TypeScript types..."
-pnpm exec tsc --noEmit
-if [ $? -ne 0 ]; then
-  echo "❌ TypeScript type errors found! Push aborted."
-  exit 1
-fi
+rm -f tsconfig.tsbuildinfo
 
-echo "✅ Linting & TypeScript checks passed! Proceeding with push..."
+echo "✅ Build passed! Proceeding with push..."

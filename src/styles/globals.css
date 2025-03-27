@@ -59,6 +59,10 @@ body {
 	.h-vh {
 		height: 100dvh;
 	}
+	.error {
+		font-size: 0.8rem;
+		color: var(--destructive);
+	}
 }
 
 h1 {

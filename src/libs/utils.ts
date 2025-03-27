@@ -1,8 +1,27 @@
+import { toast } from "sonner";
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const cn = (...classes: ClassValue[]): string => {
 	return twMerge(clsx(...classes));
+};
+
+export const displayErrors = (error: unknown) => {
+	if (typeof error === "string") {
+		toast.error(error);
+	} else if (Array.isArray(error)) {
+		error.forEach((e) => displayErrors(e));
+	} else if (error instanceof Error) {
+		toast.error(error.message);
+	} else if (
+		typeof error === "object" &&
+		error !== null &&
+		"message" in error
+	) {
+		toast.error(String((error as { message: unknown }).message));
+	} else {
+		toast.error("Something went wrong");
+	}
 };
 
 export const optimizeImage = async (
