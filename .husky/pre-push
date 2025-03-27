@@ -1,3 +1,5 @@
+
+
 echo "Running Jest tests before pushing..."
 pnpm test
 
@@ -6,10 +8,10 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "🔍 Building the project"
-pnpm build
+echo "🔍 Check for ts linting errors"
+pnpm ts-lint
 if [ $? -ne 0 ]; then
-  echo "❌ Build failed! Push aborted."
+  echo "❌ TS Linting failed! Push aborted."
   exit 1
 fi
 
