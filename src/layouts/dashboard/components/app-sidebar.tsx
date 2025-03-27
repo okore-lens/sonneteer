@@ -26,17 +26,17 @@ const data = {
 	navMain: [
 		{
 			title: "Dashboard",
-			url: PATHS.admin.dashboard,
+			url: PATHS.admin.dashboard.analytics,
 			icon: LayoutDashboard,
 		},
 		{
 			title: "Corner",
-			url: PATHS.admin.corner.list,
+			url: PATHS.admin.dashboard.corner.list,
 			icon: NotebookPen,
 			items: [
 				{
 					title: "Curate",
-					url: PATHS.admin.corner.curate,
+					url: PATHS.admin.dashboard.corner.curate,
 				},
 			],
 		},
