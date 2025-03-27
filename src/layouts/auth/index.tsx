@@ -15,7 +15,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
 				<CardHeader className="items-center flex flex-col">
 					<Logo />
 
-					<CardDescription>Let&apos;s get started</CardDescription>
+					<CardDescription>Let&apos;s curate</CardDescription>
 				</CardHeader>
 				<CardContent>{children}</CardContent>
 			</Card>

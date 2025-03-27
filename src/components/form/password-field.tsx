@@ -25,6 +25,7 @@ const PasswordField = ({ name, label, ...props }: PasswordFieldProps) => {
 					{label && <Label htmlFor={name}>{label}</Label>}
 					<section className="relative">
 						<Input
+							id={name}
 							type={showPassword ? "text" : "password"}
 							aria-invalid={!!error}
 							{...props}
@@ -37,6 +38,9 @@ const PasswordField = ({ name, label, ...props }: PasswordFieldProps) => {
 							onClick={togglePassword}
 							className="absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 p-0 text-muted-foreground hover:bg-transparent"
 							tabIndex={-1}
+							aria-label={
+								showPassword ? "Hide password" : "Show password"
+							}
 						>
 							{showPassword ? (
 								<EyeOff className="size-4" />

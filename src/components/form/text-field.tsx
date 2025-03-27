@@ -19,7 +19,12 @@ const TextField = ({ name, label, ...props }: TextFieldProps) => {
 			render={({ field, fieldState: { error } }) => (
 				<div className="grid gap-2">
 					{label && <Label htmlFor={name}>{label}</Label>}
-					<Input aria-invalid={!!error} {...props} {...field} />
+					<Input
+						id={name}
+						aria-invalid={!!error}
+						{...props}
+						{...field}
+					/>
 					{!!error && (
 						<p className="error text-end">
 							{error?.message || "Field is invalid"}

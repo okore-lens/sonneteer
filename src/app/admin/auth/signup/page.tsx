@@ -76,7 +76,11 @@ const SingUpPage = () => {
 						placeholder="okore@sonneteer.com"
 					/>
 
-					<PasswordField name="password" label="Password" />
+					<PasswordField
+						placeholder="Test@Password123"
+						name="password"
+						label="Password"
+					/>
 
 					<Button
 						className="w-full"

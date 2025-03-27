@@ -68,7 +68,11 @@ const LoginPage = () => {
 						placeholder="okore@sonneteer.com"
 					/>
 
-					<PasswordField name="password" label="Password" />
+					<PasswordField
+						placeholder="Test@Password123"
+						name="password"
+						label="Password"
+					/>
 					<Link
 						href="#"
 						className="text-xs underline-offset-2 hover:underline"
