@@ -10,7 +10,7 @@
 		"test:watch": "jest  --watch",
 		"dev": "next dev --turbopack",
 		"test:fullsuite": "jest --listTests",
-		"test": "jest --onlyChanged --listTests",
+		"test": "jest --listTests",
 		"ts-lint": "tsc --noEmit --incremental"
 	},
 	"dependencies": {
