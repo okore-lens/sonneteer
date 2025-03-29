@@ -2,16 +2,16 @@ import { render, screen } from "@testing-library/react";
 
 import Markdown from "@/components/markdown";
 
-import { mockArticles } from "@/tests/mocks/article";
+import { mockPosts } from "@/tests/mocks/post";
 
 describe("Markdown Component", () => {
-  it("renders markdown", () => {
-    render(<Markdown content={mockArticles[0].content} />);
+	it("renders markdown", () => {
+		render(<Markdown content={mockPosts[0].content} />);
 
-    const markdownEl = screen.getByTestId("markdown");
+		const markdownEl = screen.getByTestId("markdown");
 
-    expect(markdownEl).toBeVisible();
+		expect(markdownEl).toBeVisible();
 
-    expect(markdownEl).toContainHTML(mockArticles[0].content);
-  });
+		expect(markdownEl).toContainHTML(mockPosts[0].content);
+	});
 });

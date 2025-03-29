@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Crimson_Text, Rubik } from "next/font/google";
 
-import "../styles/globals.css";
-import "../styles/editor.css";
 import Providers from "./providers";
+
+import "../styles/globals.css";
 
 const crimsonText = Crimson_Text({
 	variable: "--font-crimson-text",

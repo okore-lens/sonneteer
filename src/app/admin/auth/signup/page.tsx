@@ -50,7 +50,9 @@ const SingUpPage = () => {
 		try {
 			const supabase = createBrowserClient();
 
-			const { data, error } = await supabase.auth.signUp(formData);
+			const { data, error } = await supabase.auth.signUp({
+				...formData,
+			});
 			if (error) {
 				throw error;
 			}

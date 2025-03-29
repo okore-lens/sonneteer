@@ -46,6 +46,20 @@ const LoginPage = () => {
 
 			const { error } = await supabase.auth.signInWithPassword(formData);
 			if (error) {
+				if (
+					error.message.toLowerCase().includes("email not confirmed")
+				) {
+					const { error } = await supabase.auth.resend({
+						type: "signup",
+						email: formData.email,
+					});
+					if (error) {
+						throw error;
+					}
+
+					toast.warning("Please verify your email!");
+					return;
+				}
 				throw error;
 			}
 

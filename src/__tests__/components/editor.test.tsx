@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 import Editor from "@/components/editor";
 
-import { mockArticles } from "@/tests/mocks/article";
+import { mockPosts } from "@/tests/mocks/post";
 
 describe("Editor Compoment", () => {
 	it("renders editor", () => {
@@ -18,9 +18,9 @@ describe("Editor Compoment", () => {
 		const titleInput = screen.getByPlaceholderText(/Give it a title.../i);
 
 		fireEvent.change(titleInput, {
-			target: { value: mockArticles[0].title },
+			target: { value: mockPosts[0].title },
 		});
-		expect(titleInput).toHaveValue(mockArticles[0].title);
+		expect(titleInput).toHaveValue(mockPosts[0].title);
 	});
 
 	describe("Toolbar Section", () => {
@@ -46,8 +46,8 @@ describe("Editor Compoment", () => {
 		it("renders when editor has been filled", () => {
 			render(
 				<Editor
-					articleContent={mockArticles[0].content}
-					articleTitle={mockArticles[0].title}
+					articleContent={mockPosts[0].content}
+					articleTitle={mockPosts[0].title}
 				/>
 			);
 			const actionBtns = screen.queryByTestId("editor-action-btns");

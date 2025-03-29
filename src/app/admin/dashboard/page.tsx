@@ -1,6 +1,4 @@
-import React from "react";
-
-const page = () => {
+const page = async () => {
 	return (
 		<main>
 			<div className="flex flex-1 flex-col gap-4 p-4 pt-0">

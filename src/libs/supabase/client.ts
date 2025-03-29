@@ -1,11 +1,10 @@
-import { createBrowserClient as spCreateBrowserClient } from "@supabase/ssr";
 import { SupabaseClient } from "@supabase/supabase-js";
+import { createBrowserClient as spCreateBrowserClient } from "@supabase/ssr";
+
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@/config";
 
 const createBrowserClient = (): SupabaseClient => {
-	return spCreateBrowserClient(
-		process.env.NEXT_PUBLIC_SUPABASE_URL!,
-		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-	);
+	return spCreateBrowserClient(SUPABASE_URL!, SUPABASE_ANON_KEY!);
 };
 
 export default createBrowserClient;

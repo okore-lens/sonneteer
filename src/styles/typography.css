@@ -1,0 +1,15 @@
+h1 {
+	@apply font-bold text-5xl lg:text-7xl;
+}
+
+h4 {
+	@apply font-semibold text-xl lg:text-3xl;
+}
+
+h6 {
+	@apply text-lg lg:text-xl;
+}
+
+small {
+	@apply text-balance  text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary;
+}

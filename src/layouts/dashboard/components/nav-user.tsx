@@ -1,8 +1,9 @@
 "use client";
 
-import { ChevronsUpDown, LogOut } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ChevronsUpDown, Loader2, LogOut } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -17,17 +18,30 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export function NavUser({
-	user,
-}: {
-	user: {
-		name: string;
-		email: string;
-		avatar: string;
-	};
-}) {
+import { PATHS } from "@/libs/paths";
+import { displayErrors } from "@/libs/utils";
+import createBrowserClient from "@/libs/supabase/client";
+
+export function NavUser() {
+	const router = useRouter();
 	const { isMobile } = useSidebar();
+	const [isSigningOut, setIsSigningOut] = useState<boolean>(false);
+
+	const supabase = createBrowserClient();
+
+	const handleSignOut = async () => {
+		try {
+			setIsSigningOut(true);
+			await supabase.auth.signOut({ scope: "local" });
+			router.push(PATHS.admin.auth.login);
+		} catch (error) {
+			displayErrors(error);
+		} finally {
+			setIsSigningOut(false);
+		}
+	};
 
 	return (
 		<SidebarMenu>
@@ -40,20 +54,20 @@ export function NavUser({
 						>
 							<Avatar className="h-8 w-8 rounded-lg">
 								<AvatarImage
-									src={user.avatar}
-									alt={user.name}
+								// src={user.avatar}
+								// alt={user.name}
 								/>
 								<AvatarFallback className="rounded-lg">
 									OL
 								</AvatarFallback>
 							</Avatar>
 							<div className="grid flex-1 text-left text-sm leading-tight">
-								<span className="truncate font-semibold">
+								{/* <span className="truncate font-semibold">
 									{user.name}
 								</span>
 								<span className="truncate text-xs">
 									{user.email}
-								</span>
+								</span> */}
 							</div>
 							<ChevronsUpDown className="ml-auto size-4" />
 						</SidebarMenuButton>
@@ -67,28 +81,35 @@ export function NavUser({
 						<DropdownMenuLabel className="p-0 font-normal">
 							<div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
 								<Avatar className="h-8 w-8 rounded-lg">
-									<AvatarImage
+									{/* <AvatarImage
 										src={user.avatar}
 										alt={user.name}
-									/>
+									/> */}
 									<AvatarFallback className="rounded-lg">
 										CN
 									</AvatarFallback>
 								</Avatar>
 								<div className="grid flex-1 text-left text-sm leading-tight">
-									<span className="truncate font-semibold">
+									{/* <span className="truncate font-semibold">
 										{user.name}
 									</span>
 									<span className="truncate text-xs">
 										{user.email}
-									</span>
+									</span> */}
 								</div>
 							</div>
 						</DropdownMenuLabel>
 
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
-							<LogOut />
+						<DropdownMenuItem
+							onClick={handleSignOut}
+							disabled={isSigningOut}
+						>
+							{isSigningOut ? (
+								<Loader2 className="animate-spin size-4" />
+							) : (
+								<LogOut />
+							)}
 							Log out
 						</DropdownMenuItem>
 					</DropdownMenuContent>
