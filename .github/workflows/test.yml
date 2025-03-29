@@ -23,7 +23,7 @@ jobs:
               run: pnpm install
 
             - name: Run Tests
-              run: pnpm test:fullsuite
+              run: pnpm test
 
             - name: Run Build
               run: pnpm build

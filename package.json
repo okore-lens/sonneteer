@@ -9,8 +9,7 @@
 		"prepare": "husky install",
 		"test:watch": "jest  --watch",
 		"dev": "next dev --turbopack",
-		"test:fullsuite": "jest --listTests",
-		"test": "jest --listTests",
+		"test": "jest",
 		"ts-lint": "tsc --noEmit --incremental"
 	},
 	"dependencies": {
