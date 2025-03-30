@@ -5,6 +5,8 @@ export const PATHS = {
 			corner: {
 				list: "/admin/dashboard/corner",
 				curate: "/admin/dashboard/corner/curate",
+				craft: (slug: string) =>
+					`/admin/dashboard/corner/craft/${slug}`,
 			},
 		},
 

@@ -9,7 +9,7 @@ export const mockPosts: Post[] = [
 		created_at: new Date(),
 		updated_at: new Date(),
 		user_id: "user_123",
-		description: null,
+
 		slug: "the-future-of-next-js-in-modern-web-development",
 		thumbnail_url: null,
 	},
@@ -21,7 +21,7 @@ export const mockPosts: Post[] = [
 		created_at: new Date(),
 		updated_at: new Date(),
 		user_id: "user_456",
-		description: null,
+
 		slug: "why-typescript-is-essential-for-scalable-applications",
 		thumbnail_url: null,
 	},
@@ -33,7 +33,7 @@ export const mockPosts: Post[] = [
 		created_at: new Date(),
 		updated_at: new Date(),
 		user_id: "user_123",
-		description: null,
+
 		slug: "best-practices-for-testing-react-applications",
 		thumbnail_url: null,
 	},
@@ -45,7 +45,7 @@ export const mockPosts: Post[] = [
 		created_at: new Date(),
 		updated_at: new Date(),
 		user_id: "user_456",
-		description: null,
+
 		slug: "understanding-multitenancy-in-next-js",
 		thumbnail_url: null,
 	},
@@ -57,7 +57,7 @@ export const mockPosts: Post[] = [
 		created_at: new Date(),
 		updated_at: new Date(),
 		user_id: "user_123",
-		description: null,
+
 		slug: "optimizing-performance-in-a-next-js-application",
 		thumbnail_url: null,
 	},

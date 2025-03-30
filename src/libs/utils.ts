@@ -89,3 +89,15 @@ export const optimizeImage = async (
 		reader.readAsDataURL(file);
 	});
 };
+
+export const slugify = (text: string): string => {
+	return text
+		.toString()
+		.normalize("NFD") // Normalize to decompose diacritics (e.g., é → e)
+		.replace(/[\u0300-\u036f]/g, "") // Remove diacritic marks
+		.toLowerCase()
+		.trim()
+		.replace(/[^a-z0-9\s-]/g, "") // Remove non-alphanumeric characters (except spaces and hyphens)
+		.replace(/\s+/g, "-") // Replace spaces with hyphens
+		.replace(/-+/g, "-"); // Remove consecutive hyphens
+};

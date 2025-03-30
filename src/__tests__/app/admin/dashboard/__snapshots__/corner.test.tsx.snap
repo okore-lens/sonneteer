@@ -1,0 +1,499 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Corner Page renders posts when data is available 1`] = `
+<div>
+  <main>
+    <div
+      class="flex flex-wrap justify-between gap-3"
+    >
+      <h6>
+        Posts
+      </h6>
+      <button
+        class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-none shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3"
+        data-slot="button"
+      >
+        <a
+          href="/admin/dashboard/corner/curate"
+        >
+          Curate
+        </a>
+      </button>
+    </div>
+    <section
+      class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
+    >
+      <section
+        class="relative w-full h-80 md:h-64 rounded-2xl overflow-hidden lg:hover:scale-[1.005] group transition-scale duration-1000"
+        data-testid="post-card"
+      >
+        <img
+          alt="The Future of Next.js in Modern Web Development"
+          class="object-cover object-center"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+        <div
+          class="p-3 lg:opacity-0 group-hover:opacity-100 bg-[#2e2e2ebd] absolute w-full text-white flex justify-between items-end bottom-0 transition-opacity duration-1000"
+        >
+          <section>
+            <h6>
+              The Future of Next.js in Modern Web Development
+            </h6>
+            <small
+              class="text-right !text-[#fefefe]"
+            >
+              30/03/2025
+            </small>
+          </section>
+          <section
+            class="flex gap-1"
+          >
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-pen"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+              </svg>
+            </button>
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-trash2"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6h18"
+                />
+                <path
+                  d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                />
+                <path
+                  d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </button>
+          </section>
+        </div>
+      </section>
+      <section
+        class="relative w-full h-80 md:h-64 rounded-2xl overflow-hidden lg:hover:scale-[1.005] group transition-scale duration-1000"
+        data-testid="post-card"
+      >
+        <img
+          alt="Why TypeScript is Essential for Scalable Applications"
+          class="object-cover object-center"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+        <div
+          class="p-3 lg:opacity-0 group-hover:opacity-100 bg-[#2e2e2ebd] absolute w-full text-white flex justify-between items-end bottom-0 transition-opacity duration-1000"
+        >
+          <section>
+            <h6>
+              Why TypeScript is Essential for Scalable Applications
+            </h6>
+            <small
+              class="text-right !text-[#fefefe]"
+            >
+              30/03/2025
+            </small>
+          </section>
+          <section
+            class="flex gap-1"
+          >
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-pen"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+              </svg>
+            </button>
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-trash2"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6h18"
+                />
+                <path
+                  d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                />
+                <path
+                  d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </button>
+          </section>
+        </div>
+      </section>
+      <section
+        class="relative w-full h-80 md:h-64 rounded-2xl overflow-hidden lg:hover:scale-[1.005] group transition-scale duration-1000"
+        data-testid="post-card"
+      >
+        <img
+          alt="Best Practices for Testing React Applications"
+          class="object-cover object-center"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+        <div
+          class="p-3 lg:opacity-0 group-hover:opacity-100 bg-[#2e2e2ebd] absolute w-full text-white flex justify-between items-end bottom-0 transition-opacity duration-1000"
+        >
+          <section>
+            <h6>
+              Best Practices for Testing React Applications
+            </h6>
+            <small
+              class="text-right !text-[#fefefe]"
+            >
+              30/03/2025
+            </small>
+          </section>
+          <section
+            class="flex gap-1"
+          >
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-pen"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+              </svg>
+            </button>
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-trash2"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6h18"
+                />
+                <path
+                  d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                />
+                <path
+                  d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </button>
+          </section>
+        </div>
+      </section>
+      <section
+        class="relative w-full h-80 md:h-64 rounded-2xl overflow-hidden lg:hover:scale-[1.005] group transition-scale duration-1000"
+        data-testid="post-card"
+      >
+        <img
+          alt="Understanding Multitenancy in Next.js"
+          class="object-cover object-center"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+        <div
+          class="p-3 lg:opacity-0 group-hover:opacity-100 bg-[#2e2e2ebd] absolute w-full text-white flex justify-between items-end bottom-0 transition-opacity duration-1000"
+        >
+          <section>
+            <h6>
+              Understanding Multitenancy in Next.js
+            </h6>
+            <small
+              class="text-right !text-[#fefefe]"
+            >
+              30/03/2025
+            </small>
+          </section>
+          <section
+            class="flex gap-1"
+          >
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-pen"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+              </svg>
+            </button>
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-trash2"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6h18"
+                />
+                <path
+                  d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                />
+                <path
+                  d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </button>
+          </section>
+        </div>
+      </section>
+      <section
+        class="relative w-full h-80 md:h-64 rounded-2xl overflow-hidden lg:hover:scale-[1.005] group transition-scale duration-1000"
+        data-testid="post-card"
+      >
+        <img
+          alt="Optimizing Performance in a Next.js Application"
+          class="object-cover object-center"
+          data-nimg="fill"
+          decoding="async"
+          loading="lazy"
+          sizes="100vw"
+          src="/_next/image?url=%2Fimg.jpg&w=3840&q=75"
+          srcset="/_next/image?url=%2Fimg.jpg&w=640&q=75 640w, /_next/image?url=%2Fimg.jpg&w=750&q=75 750w, /_next/image?url=%2Fimg.jpg&w=828&q=75 828w, /_next/image?url=%2Fimg.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fimg.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimg.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fimg.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fimg.jpg&w=3840&q=75 3840w"
+          style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+        />
+        <div
+          class="p-3 lg:opacity-0 group-hover:opacity-100 bg-[#2e2e2ebd] absolute w-full text-white flex justify-between items-end bottom-0 transition-opacity duration-1000"
+        >
+          <section>
+            <h6>
+              Optimizing Performance in a Next.js Application
+            </h6>
+            <small
+              class="text-right !text-[#fefefe]"
+            >
+              30/03/2025
+            </small>
+          </section>
+          <section
+            class="flex gap-1"
+          >
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-pen"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+              </svg>
+            </button>
+            <button
+              class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[>svg]:px-3 rounded-lg"
+              data-slot="button"
+            >
+              <svg
+                class="lucide lucide-trash2"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6h18"
+                />
+                <path
+                  d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                />
+                <path
+                  d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </button>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+`;

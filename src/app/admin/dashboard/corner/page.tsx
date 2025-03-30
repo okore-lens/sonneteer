@@ -7,7 +7,7 @@ import ErrorWithRetry from "@/components/error-with-retry";
 import { PATHS } from "@/libs/paths";
 import { createServerClient } from "@/libs/supabase/server";
 
-const page = async () => {
+const CornerPage = async () => {
 	const supabase = createServerClient();
 
 	try {
@@ -58,4 +58,4 @@ const page = async () => {
 	}
 };
 
-export default page;
+export default CornerPage;

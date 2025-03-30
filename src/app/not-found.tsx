@@ -23,7 +23,7 @@ export default function NotFound() {
 					incorrect.
 				</p>
 				<div className="flex flex-col sm:flex-row gap-3 justify-center">
-					<Button asChild variant="default">
+					<Button variant="default">
 						<Link href="/">Go back home</Link>
 					</Button>
 					<Button
