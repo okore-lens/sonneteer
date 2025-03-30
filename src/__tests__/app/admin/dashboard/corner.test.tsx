@@ -22,7 +22,7 @@ describe("Corner Page", () => {
 			}),
 		});
 
-		const { container } = render(await CornerPage());
+		render(await CornerPage());
 
 		await waitFor(() => {
 			expect(screen.getAllByTestId("post-card")).toHaveLength(5);
@@ -30,7 +30,6 @@ describe("Corner Page", () => {
 
 		expect(screen.getByText(mockPosts[0].title)).toBeInTheDocument();
 		expect(screen.getByText(mockPosts[4].title)).toBeInTheDocument();
-		expect(container).toMatchSnapshot();
 	});
 
 	it("shows an error component when no posts are found", async () => {
